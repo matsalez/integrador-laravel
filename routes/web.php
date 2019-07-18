@@ -41,8 +41,11 @@ Route::get('/newarrivals', function () {
 Route::get('/newarrivals/product', function () {
     return view('front.products.product');
 });
+//Newproducts
+Route::get('/products/create', 'ProductsController@create'); // Formulario para crear
+Route::post('/products', 'ProductsController@index'); // Para enviar los productos al formulario
 
-//One product
+//Faq
 Route::get('/faq', function () {
     return view('front.faq.index');
 });
