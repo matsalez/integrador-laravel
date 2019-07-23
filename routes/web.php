@@ -1,4 +1,5 @@
 <?php
+use App\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +44,7 @@ Route::get('/newarrivals/product', function () {
 });
 //Newproducts
 Route::get('/products/create', 'ProductsController@create'); // Formulario para crear
-Route::post('/products', 'ProductsController@index'); // Para enviar los productos al formulario
+Route::post('/products', 'ProductsController@store'); // Para enviar los productos al formulario
 
 //Faq
 Route::get('/faq', function () {

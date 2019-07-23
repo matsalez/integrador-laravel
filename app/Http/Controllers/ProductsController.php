@@ -39,9 +39,29 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+     public function store(Request $request)
+   	{
+      dd($request->all());
+   		// 1. Validamos
+   		$request->validate([
+   			// input_name => rules,
+   			'name' => 'required | max:30',
+   			'description' => 'required | max:150',
+   			'size' => 'required ',
+   			'release_date' => 'required',
+   			'length' => 'required | numeric',
+   			'genre_id' => 'required',
+   			'poster' => 'required | image'
+   		], [
+   			// input_name.rule => message
+   			'title.required' => 'El campo título es obligatorio',
+   			// 'rating.required' => 'El campo rating es obligatorio',
+   			'required' => 'El campo :attribute es obligatorio',
+   			'numeric' => 'El campo :attribute debe ser numérico',
+   			'title.max' => 'El :attribute debe contener máximo 15 carácteres',
+   			'rating.min' => 'El mínimo permitido es 0',
+   			'rating.max' => 'El máximo permitido es 10'
+   		]);
     }
 
     /**
