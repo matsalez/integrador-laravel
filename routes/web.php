@@ -44,7 +44,8 @@ Route::get('/newarrivals/product', function () {
 });
 //Newproducts
 Route::get('/products/create', 'ProductsController@create'); // Formulario para crear
-Route::post('/products', 'ProductsController@store'); // Para enviar los productos al formulario
+Route::post('/products', 'ProductsController@store');
+// Route::get('/products/{id}', 'ProductsController@show'); // Para enviar los productos al formulario
 
 //Faq
 Route::get('/faq', function () {

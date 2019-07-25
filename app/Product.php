@@ -8,6 +8,11 @@ class Product extends Model
 {
   protected $fillable = ['name', 'price','description', 'image', 'color_id', 'size_id', 'category_id'];
 
+  public function getName()
+  {
+    return $this->name;
+  }
+
   public function colors()
 	{
 		return $this->belongsToMany(Color::class)->withTimestamps();

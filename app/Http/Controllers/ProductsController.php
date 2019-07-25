@@ -46,21 +46,26 @@ class ProductsController extends Controller
    		$request->validate([
    			// input_name => rules,
    			'name' => 'required | max:30',
-   			'description' => 'required | max:150',
-   			'size' => 'required ',
-   			'release_date' => 'required',
-   			'length' => 'required | numeric',
-   			'genre_id' => 'required',
-   			'poster' => 'required | image'
+        'price' => 'required | integer | max:5',
+        'description' => 'required | max:30',
+        'poster' => 'required | image',
+        'colors' => 'required',
+   			'sizes' => 'required ',
+
    		], [
    			// input_name.rule => message
-   			'title.required' => 'El campo título es obligatorio',
-   			// 'rating.required' => 'El campo rating es obligatorio',
-   			'required' => 'El campo :attribute es obligatorio',
-   			'numeric' => 'El campo :attribute debe ser numérico',
-   			'title.max' => 'El :attribute debe contener máximo 15 carácteres',
-   			'rating.min' => 'El mínimo permitido es 0',
-   			'rating.max' => 'El máximo permitido es 10'
+   			'name.required' => 'El campo nombre es obligatorio',
+        'name.max' => 'El campo nombre debe contener máximo 30 carácteres',
+        'price.required' => 'El campo precio es obligatorio',
+        'price.integer' => 'El campo precio debe ser un número',
+        'price.max' => 'El campo precio debe contener máximo 5 carácteres',
+        'description.required' => 'La descripción es obligatoria',
+        'description.max' => 'La descripción debe contener máximo 30 carácteres',
+        'poster.required' => 'La imagen es obligatoria',
+        'poster.image' => 'La imagen no es un formato válido',
+        'colors.required' => 'Debes seleccionar al menos un color',
+        'sizes.required' => 'Debes seleccionar al menos un talle',
+
    		]);
     }
 
@@ -72,7 +77,9 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+      $theProduct = Product::find($id);
+
+      return view('front.products.show', compact('theProduct'));
     }
 
     /**
